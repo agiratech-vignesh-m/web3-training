@@ -1,0 +1,95 @@
+@import '../../variables.scss';
+
+.page-header-title {
+    --tw-text-opacity: 1;
+    color: $textcolor;
+    font-size: 1.5rem/* 24px */;
+    line-height: 2rem/* 32px */;
+    padding-left: 1.25rem/* 20px */;
+    padding-right: 1.25rem/* 20px */;
+    padding-bottom: 1rem;
+}
+.addConstitution-card{
+    border: 1px solid $bordercolor;
+    border-radius: 40.5px;
+    padding: 4%;
+    border-color: $bordercolor;
+    border-radius: 0.75rem;
+
+    .field-label {
+        font-size: 1rem/* 16px */;
+        line-height: 1.5rem/* 24px */;
+        padding-bottom: 5px;
+        display: inline-block;
+        color: $textcolor;
+    .graymandatory {
+        font-size: 1rem/* 16px */;
+        line-height: 1.5rem/* 24px */;
+        padding-left: 0.125rem/* 2px */;
+        color: $textlink;
+    }
+    }
+
+    .input-field {
+        border-radius: 0.75rem !important;  
+        border-color: $borderhover;
+        border-width: 1px;
+        border-style: solid;
+        color: $textcolor;
+        line-height: 1.7rem !important;
+    }
+    .mandatory {
+        font-size: 1rem/* 16px */;
+        line-height: 1.5rem/* 24px */;
+        padding-left: 0.125rem;
+        color: #d32f2f;
+    }
+  }
+
+  .create-action {
+    text-align: center;
+    margin-top: 1.25rem/* 20px */;
+
+    .create-btn {
+            background-color: #0f7afb !important;
+            color: $textcolor !important;
+            border-radius: 0.5rem/* 8px */;
+            font-size: 1rem/* 16px */;
+            line-height: 1.5rem/* 24px */;
+            padding-left: 1.5rem/* 24px */;
+            padding-right: 1.5rem/* 24px */;
+            padding-top: 0.5rem/* 8px */;
+            padding-bottom: 0.5rem/* 8px */;
+            margin-right: 1.5rem/* 24px */;
+            margin-top: 0.75rem/* 12px */;
+        }
+
+        .create-cancel-btn {
+            background-color: #211f24 !important;
+            outline: thin solid #6D6D6D;
+        }
+  }
+  .mb-5 {
+    margin-bottom: 1.25rem;
+  }
+
+  .MuiOutlinedInput-notchedOutline {
+    border-color: inherit !important;
+    border-width: 0px !important;
+  }
+
+  .MuiInputBase-input {
+    // height: 1.7rem !important;
+  }
+
+  .readonly-text {
+    border-color: #5e5f60 !important;
+    color: $textlink !important;
+  }
+
+  .text-range {
+    margin: 2px;
+    font-size: 12px;
+    text-align: end;
+    color: #d5cb80;
+  }

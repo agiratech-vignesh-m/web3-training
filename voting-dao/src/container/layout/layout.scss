@@ -1,0 +1,170 @@
+  @import '../../variables.scss';
+
+  /* Nav Layout */
+  .layout-flex {
+    display: flex;
+    color: $textcolor;
+    // background-color: $bgcolor;
+    .h-screen {
+        height: 100vh;
+      }
+      .sticky {
+        position: sticky;
+      }
+      
+      .top-0 {
+        top: 0px;
+      }
+
+      .main-container {
+        width: 100%;
+        .main-div {
+            flex: 1 1 0%;
+            margin-top: 0.25rem/* 4px */;
+            .nav-bar-box {
+              border-width: 0px 0px 1px 0px;
+              // border-style: solid;
+              // border-color: $bordercolor;
+              // position: sticky;
+              // background-color: $bgcolor;
+              top: 0;
+              z-index: 99;
+            } 
+            .container {
+                margin: 1rem 1rem 1rem 1rem;
+                padding: 1rem 1rem 1rem 1rem;
+                // background-color: inherit;
+                border-radius: 10px !important;
+                background: linear-gradient(237.43deg, rgb(43, 49, 61) -12.81%, rgb(23, 26, 32) 132.72%);
+                box-shadow: none;
+                transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+                // box-shadow: rgb(233 215 215 / 9%) 0px 1px 3px 0px, rgb(188 212 235 / 15%) 0px 0px 0px 1px;
+                .user-box {
+                  padding: 2%;
+                }
+                
+                .user-box::-webkit-scrollbar {
+                  // background-color: #F6F6F6;
+                  background-color: none;
+                  /* border-radius: 4px; */
+                  width: 0px;
+                }
+                
+                .user-box::-webkit-scrollbar-thumb {
+                  border-radius: 4px;
+                  /* -webkit-box-shadow: inset 0 0 6px #BFBFBF;  */
+                  // background-color: #BFBFBF;
+                  background-color: none;
+                }
+              }
+          }
+      }
+  }
+
+
+  
+  /* Nav Layout */
+  
+
+/* Side bar */
+
+.sidebar{
+  height: 100vh;
+  position: sticky;
+  width: 270px !important;
+  color: rgb(250, 250, 251);
+  transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  border-radius: 4px;
+  box-shadow: none;
+  background: linear-gradient(237.43deg, rgb(43, 49, 61) -12.81%, rgb(23, 26, 32) 132.72%);
+  // background-color: inherit !important;
+  // border-width: 0px 1px 0px 0px;
+  // border-style: solid;
+  // border-color: $bordercolor;
+
+  .side-menu-img {
+    padding: 1rem;
+  }
+}
+
+.side {
+  margin: 8px;
+}
+
+.side {
+  .MuiListItemText-root {
+    color: $textcolor;
+
+}
+  a {
+    /* font-family: 'InterSemibold'; */
+    font-style: normal;
+    font-size: 16px;
+    line-height: 24px;
+    color: inherit;
+    text-decoration: none;
+    &:hover {
+      color: rgb(244, 208, 146) !important;
+      text-decoration: none;
+  }
+}
+  }
+
+.side .MuiListItemIcon-root {
+    display: flex !important;
+    justify-content: center !important;
+    font-size: 20px;
+}
+
+.side .active {
+  background: rgb(103, 107, 116);
+  border-radius: 9px;
+  text-decoration: none;
+  &:hover {
+    background: rgb(103, 107, 116);
+}
+}
+
+.side .active  .v-line {
+    border-left: 4px solid #007BFF !important;
+    height: 28px;
+    position: absolute;
+    left: 0;
+}
+.side .active .MuiListItemIcon-root {
+    color: #007BFF !important;
+}
+
+.header-logo {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    // flex-wrap: wrap;
+    width: 100%;
+    margin-right: 10px !important;
+
+    .btn-wallet {
+          /* border: 2px solid #2d2d2d; */
+    /* background-color: transparent; */
+    color: #ffffff;
+    border-radius: 5px;
+    height: 46px;
+    font-size: 1rem;
+    padding: 0px 22px;
+    background: linear-gradient(237.43deg, rgb(43, 49, 61) -12.81%, rgb(23, 26, 32) 132.72%);
+    margin: 0px 10px;
+    }
+}
+
+.MuiAppBar-root {
+    box-shadow: unset !important;
+}
+
+.ml-2 {
+  margin-left: 0.5rem/* 8px */;
+}
+
+.mr-2 {
+  margin-right: 0.5rem/* 8px */;
+}
+

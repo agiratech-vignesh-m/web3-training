@@ -1,0 +1,533 @@
+[
+  { "inputs": [], "name": "alreadyVoted", "type": "error" },
+  { "inputs": [], "name": "notEnoughBalanceToCastVote", "type": "error" },
+  { "inputs": [], "name": "notEnoughBalanceToCreateProposal", "type": "error" },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "_ad",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "uint256",
+        "name": "_proposalId",
+        "type": "uint256"
+      },
+      {
+        "indexed": true,
+        "internalType": "string",
+        "name": "_title",
+        "type": "string"
+      }
+    ],
+    "name": "ProposalCreated",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "_ad",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "uint256",
+        "name": "_proposalId",
+        "type": "uint256"
+      },
+      {
+        "indexed": true,
+        "internalType": "bool",
+        "name": "_vote",
+        "type": "bool"
+      }
+    ],
+    "name": "Voted",
+    "type": "event"
+  },
+  {
+    "inputs": [],
+    "name": "AME_VOTING_TOKEN",
+    "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "MIN_TOK_CREATEPROPOSAL",
+    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "MIN_TOK_VOTE",
+    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "uint256", "name": "_sort", "type": "uint256" }
+    ],
+    "name": "activeProposals",
+    "outputs": [
+      {
+        "components": [
+          {
+            "components": [
+              { "internalType": "string", "name": "title", "type": "string" },
+              {
+                "internalType": "string",
+                "name": "description",
+                "type": "string"
+              },
+              {
+                "internalType": "uint256",
+                "name": "setQuorum",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "proposalId",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "timestamp",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "startDate",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "endDate",
+                "type": "uint256"
+              }
+            ],
+            "internalType": "struct Voting.proposalDetails",
+            "name": "ps",
+            "type": "tuple"
+          },
+          { "internalType": "uint256", "name": "forVotes", "type": "uint256" },
+          {
+            "internalType": "uint256",
+            "name": "againstVotes",
+            "type": "uint256"
+          },
+          { "internalType": "uint256", "name": "status", "type": "uint256" }
+        ],
+        "internalType": "struct Voting.allProposals[]",
+        "name": "proposals",
+        "type": "tuple[]"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "uint256", "name": "_sort", "type": "uint256" }
+    ],
+    "name": "allProposalDetails",
+    "outputs": [
+      {
+        "components": [
+          {
+            "components": [
+              { "internalType": "string", "name": "title", "type": "string" },
+              {
+                "internalType": "string",
+                "name": "description",
+                "type": "string"
+              },
+              {
+                "internalType": "uint256",
+                "name": "setQuorum",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "proposalId",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "timestamp",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "startDate",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "endDate",
+                "type": "uint256"
+              }
+            ],
+            "internalType": "struct Voting.proposalDetails",
+            "name": "ps",
+            "type": "tuple"
+          },
+          { "internalType": "uint256", "name": "forVotes", "type": "uint256" },
+          {
+            "internalType": "uint256",
+            "name": "againstVotes",
+            "type": "uint256"
+          },
+          { "internalType": "uint256", "name": "status", "type": "uint256" }
+        ],
+        "internalType": "struct Voting.allProposals[]",
+        "name": "proposals",
+        "type": "tuple[]"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "allProposalDetailsAscendingOrder",
+    "outputs": [
+      {
+        "components": [
+          {
+            "components": [
+              { "internalType": "string", "name": "title", "type": "string" },
+              {
+                "internalType": "string",
+                "name": "description",
+                "type": "string"
+              },
+              {
+                "internalType": "uint256",
+                "name": "setQuorum",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "proposalId",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "timestamp",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "startDate",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "endDate",
+                "type": "uint256"
+              }
+            ],
+            "internalType": "struct Voting.proposalDetails",
+            "name": "ps",
+            "type": "tuple"
+          },
+          { "internalType": "uint256", "name": "forVotes", "type": "uint256" },
+          {
+            "internalType": "uint256",
+            "name": "againstVotes",
+            "type": "uint256"
+          },
+          { "internalType": "uint256", "name": "status", "type": "uint256" }
+        ],
+        "internalType": "struct Voting.allProposals[]",
+        "name": "proposals",
+        "type": "tuple[]"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "allProposalDetailsDescendingOrder",
+    "outputs": [
+      {
+        "components": [
+          {
+            "components": [
+              { "internalType": "string", "name": "title", "type": "string" },
+              {
+                "internalType": "string",
+                "name": "description",
+                "type": "string"
+              },
+              {
+                "internalType": "uint256",
+                "name": "setQuorum",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "proposalId",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "timestamp",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "startDate",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "endDate",
+                "type": "uint256"
+              }
+            ],
+            "internalType": "struct Voting.proposalDetails",
+            "name": "ps",
+            "type": "tuple"
+          },
+          { "internalType": "uint256", "name": "forVotes", "type": "uint256" },
+          {
+            "internalType": "uint256",
+            "name": "againstVotes",
+            "type": "uint256"
+          },
+          { "internalType": "uint256", "name": "status", "type": "uint256" }
+        ],
+        "internalType": "struct Voting.allProposals[]",
+        "name": "proposals",
+        "type": "tuple[]"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "ascending",
+    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "bool", "name": "_decision", "type": "bool" },
+      { "internalType": "uint256", "name": "_proposalId", "type": "uint256" }
+    ],
+    "name": "castVote",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "uint256", "name": "_sort", "type": "uint256" }
+    ],
+    "name": "completedProposals",
+    "outputs": [
+      {
+        "components": [
+          {
+            "components": [
+              { "internalType": "string", "name": "title", "type": "string" },
+              {
+                "internalType": "string",
+                "name": "description",
+                "type": "string"
+              },
+              {
+                "internalType": "uint256",
+                "name": "setQuorum",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "proposalId",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "timestamp",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "startDate",
+                "type": "uint256"
+              },
+              {
+                "internalType": "uint256",
+                "name": "endDate",
+                "type": "uint256"
+              }
+            ],
+            "internalType": "struct Voting.proposalDetails",
+            "name": "ps",
+            "type": "tuple"
+          },
+          { "internalType": "uint256", "name": "forVotes", "type": "uint256" },
+          {
+            "internalType": "uint256",
+            "name": "againstVotes",
+            "type": "uint256"
+          },
+          { "internalType": "uint256", "name": "status", "type": "uint256" }
+        ],
+        "internalType": "struct Voting.allProposals[]",
+        "name": "proposals",
+        "type": "tuple[]"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "components": [
+          { "internalType": "string", "name": "title", "type": "string" },
+          { "internalType": "string", "name": "description", "type": "string" },
+          { "internalType": "uint256", "name": "setQuorum", "type": "uint256" },
+          { "internalType": "uint256", "name": "endDate", "type": "uint256" }
+        ],
+        "internalType": "struct Voting.proposalParams",
+        "name": "_data",
+        "type": "tuple"
+      }
+    ],
+    "name": "createProposal",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "descending",
+    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "uint256", "name": "_proposalId", "type": "uint256" }
+    ],
+    "name": "getProposalDetails",
+    "outputs": [
+      {
+        "components": [
+          { "internalType": "string", "name": "title", "type": "string" },
+          { "internalType": "string", "name": "description", "type": "string" },
+          { "internalType": "uint256", "name": "setQuorum", "type": "uint256" },
+          {
+            "internalType": "uint256",
+            "name": "proposalId",
+            "type": "uint256"
+          },
+          { "internalType": "uint256", "name": "timestamp", "type": "uint256" },
+          { "internalType": "uint256", "name": "startDate", "type": "uint256" },
+          { "internalType": "uint256", "name": "endDate", "type": "uint256" }
+        ],
+        "internalType": "struct Voting.proposalDetails",
+        "name": "details",
+        "type": "tuple"
+      },
+      {
+        "internalType": "uint256",
+        "name": "totalVotesForProposal",
+        "type": "uint256"
+      },
+      { "internalType": "address[]", "name": "accepters", "type": "address[]" },
+      { "internalType": "address[]", "name": "rejecters", "type": "address[]" }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "address", "name": "_voter", "type": "address" },
+      { "internalType": "uint256", "name": "_proposalId", "type": "uint256" }
+    ],
+    "name": "getVotingStatus",
+    "outputs": [
+      {
+        "components": [
+          {
+            "internalType": "uint256",
+            "name": "proposalId",
+            "type": "uint256"
+          },
+          { "internalType": "bool", "name": "voteStatus", "type": "bool" },
+          { "internalType": "uint256", "name": "timestamp", "type": "uint256" }
+        ],
+        "internalType": "struct Voting.votersDecision",
+        "name": "votingStatus",
+        "type": "tuple"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "address", "name": "_voter", "type": "address" },
+      { "internalType": "uint256", "name": "_proposalId", "type": "uint256" }
+    ],
+    "name": "isUserVoted",
+    "outputs": [{ "internalType": "bool", "name": "status", "type": "bool" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "uint256", "name": "_proposalId", "type": "uint256" }
+    ],
+    "name": "proposalResult",
+    "outputs": [
+      { "internalType": "uint256", "name": "result", "type": "uint256" }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "name": "totalVotes",
+    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "votingIdState",
+    "outputs": [
+      {
+        "components": [
+          { "internalType": "string", "name": "notStarted", "type": "string" },
+          { "internalType": "string", "name": "inprogress", "type": "string" },
+          { "internalType": "string", "name": "passed", "type": "string" },
+          { "internalType": "string", "name": "failed", "type": "string" },
+          { "internalType": "string", "name": "drawn", "type": "string" }
+        ],
+        "internalType": "struct Voting.voteResult",
+        "name": "showVotingResult",
+        "type": "tuple"
+      }
+    ],
+    "stateMutability": "pure",
+    "type": "function"
+  }
+]

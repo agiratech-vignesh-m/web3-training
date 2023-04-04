@@ -1,0 +1,35 @@
+@import '../../variables.scss';
+
+.proposal-list-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    .proposal-filter-box {
+        background-color: transparent;
+        border-color: $borderhover;
+        border-width: 1px;
+        border-style: solid;
+        height: 3rem;
+    }
+
+}
+.propoasl-select {
+    color: $textlink !important;
+    .MuiList-root {
+        background-color: black;
+        color: white;
+    }
+    .MuiOutlinedInput-notchedOutline {
+        border: none;
+    }
+    .proposal-stack {
+
+}
+}
+.proposal-btn {
+    border-color: $borderhover !important;
+    border-width: 1px !important;
+    border-style: solid !important;
+    color: $textlink !important;
+}

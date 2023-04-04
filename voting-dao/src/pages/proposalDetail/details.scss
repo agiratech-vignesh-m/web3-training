@@ -1,0 +1,157 @@
+@import '../../variables.scss';
+
+.detail-main-div{
+    // display: flex;
+    // flex-wrap: wrap;
+.detail-card{
+    // width: 60%;
+    // border-color: #8b949e;
+    // border-width: 1px;
+    // border-style: solid;
+    // border-radius: 10px !important;
+    margin: 1rem;
+    background-color: inherit !important;
+    box-shadow: none;
+    .detail-card-content {
+        // background: linear-gradient(237.43deg, rgb(43, 49, 61) -12.81%, rgb(23, 26, 32) 132.72%) !important;
+        color: $textcolor;
+        text-align: 'center' !important;
+        padding: 2rem;
+        .detail-title {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            font-size: 1.5rem;
+            color: #e56c1f;
+            // margin-bottom: 1rem;
+            .detail-btn {
+                font-size: 14px;
+                height: 26px;
+                vertical-align: middle;
+                padding: 0 12px;
+                border-radius: 14px;
+                line-height: 24px;
+            }
+    
+            .detail-btn-active {
+                color: white;
+                background-color: green;
+              }
+    
+            .detail-btn-closed {
+              color: white;
+              background-color: red;
+            }
+        }
+        .detail-desc {
+            text-align: justify;
+            // overflow-wrap: break-word;
+            // word-break: break-word;
+            // overflow: hidden;
+            // display: -webkit-box;
+            // -webkit-box-orient: vertical;
+            // -webkit-line-clamp: 2;
+            color: rgb(250, 250, 251);;
+            margin: 10px 0px;
+            font-size: 16px;
+            line-height: 26px;
+            font-weight: 500;
+        }
+        .detail-date {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            span {
+                font-size: 1.3rem;
+                color: rgb(244 208 146 / 85%);
+            }
+        }
+    }
+}
+
+.detail-voting-card {
+    color: $textcolor;
+    border-color: #8b949e;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 10px !important;
+    margin: 1rem;
+    // padding: 1rem;
+    background-color: inherit !important;
+    .detail-voting-title {
+        padding: 0.5rem 1rem 0rem 1rem;
+        font-size: 1.5rem;
+        font-weight: 600;
+    }
+    .detail-vote-btn-card {
+        padding: 1rem;
+        .btn-wallet {
+            width: 100%;
+            border: 2px solid #2d2d2d; 
+            background-color: transparent; 
+            color: #ffffff;
+            border-radius: 28px;
+            height: 46px;
+            font-size: 1rem;
+            padding: 0px 22px;
+            margin: 10px 0px;
+    //   background: linear-gradient(237.43deg, rgb(43, 49, 61) -12.81%, rgb(23, 26, 32) 132.72%);
+      }
+      .active-vote {
+        background-color: blueviolet;
+      }
+      .vote-btn {
+        background-color: #9f9f9fa1;
+      }
+      .vote-ame-error {
+        text-align: center;
+        color: red;
+        margin: 0px;
+      }
+    }
+}
+.detail-card-info {
+    // width: 30%;
+    color: $textcolor;
+    border-color: #8b949e;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 10px !important;
+    margin: 1rem;
+    // padding: 1rem;
+    background-color: inherit !important;
+    .detail-info-title {
+        padding: 0.5rem 1rem 0rem 1rem;
+        font-size: 1.5rem;
+        font-weight: 600;
+    }
+    .detail-progress-bar-card {
+        // margin-top: 1rem;
+        padding: 1rem;
+    .detail-progress-bar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        .value {
+            color: $textlink;
+        }
+    }
+    .date-div {
+        display: flex;
+        flex-wrap: wrap;
+        line-height: 2.5rem;
+        align-items: center;
+        justify-content: space-between;
+        .date-label {
+            color: $textlink;
+        }
+        .date-value {
+            color: $textcolor;
+        }
+    }
+}
+}
+}

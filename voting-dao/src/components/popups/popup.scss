@@ -1,0 +1,69 @@
+@import '../../variables.scss';
+
+.wallet-detail {
+    padding: 2rem;
+    .MuiPaper-root {
+        padding: 2rem !important;
+    
+.wallet-detail-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $bgcolor;
+    font-size: 2.5rem !important;
+    font-weight: 600 !important;
+    color: #434976 !important;
+    .wallet-logo {
+        background-color: #0000003b;
+        display: flex;
+        padding: 10px;
+        border-radius: 3%;
+    }
+}
+
+.wallet-detail-heading {
+    text-align: center;
+    color: $bgcolor;
+    font-size: 2rem;
+    // margin-top: 0px;
+}
+
+.wallet-detail-address {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.wallet-detail-btn {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin: 0.5rem;
+    .btn-group {
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        flex-wrap: nowrap;
+        border-bottom: 2px solid #434976;
+        cursor: pointer;
+        .btn {
+            color: $bgcolor;
+            margin-right: 2rem;
+        }
+    }
+}
+
+.btn-wallet {
+color: #ffffff !important;
+border-radius: 28px !important;
+height: 46px;
+font-size: 1rem !important;
+padding: 0px 22px !important;
+background: linear-gradient(237.43deg, rgb(228 104 31) -12.81%, rgb(227 102 29) 132.72%);
+// margin: 0px 10px !important;
+// margin-bottom: 1rem !important;
+}
+    }
+}
