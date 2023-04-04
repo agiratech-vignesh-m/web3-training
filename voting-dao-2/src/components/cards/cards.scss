@@ -1,0 +1,150 @@
+@import '../../variables.scss';
+
+.list-card {
+    font-family: 'CircularStdBook' !important;
+    padding: 10px;
+    margin: 10px;
+    background-color: inherit !important;
+    border-radius: 0.75rem !important;
+    border-color: $bordercolor;
+    border-width: 1px;
+    border-style: solid;
+    color: inherit !important;
+    cursor: pointer;
+    // position: relative;
+    &:hover {
+        // overflow: initial !important;
+        border-color: $borderhover;
+        border-color: #e5cdc2f5;
+        box-shadow: rgb(0 0 0 / 15%) 0px 15px 25px, rgb(0 0 0 / 5%) 0px 5px 10px;
+    }
+    .card-title {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        font-size: 18;
+        font-family: 'CircularStdBold' !important;
+        text-transform: capitalize;
+        position: relative;
+        .card-title-text {
+            font-size: '20px';
+            overflow-wrap: break-word;
+            word-break: break-word;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 1;
+            max-width: 80%;
+            @media (max-width: 600px) {
+                font-size: 18px !important;
+                margin-top: 30px !important;
+                max-width: 100%;
+              }
+        }
+        .card-btn {
+            font-size: 14px;
+            height: 26px;
+            vertical-align: middle;
+            padding: 0 12px;
+            border-radius: 14px;
+            line-height: 24px;
+            color: white;
+            @media (max-width: 600px) {
+                position: absolute;
+                right: 0px;
+                top: 0px;
+            }
+        }
+
+        .card-btn-active {
+            background-color: green;
+          }
+
+        .card-btn-closed {
+          background-color: red;
+        }
+    }
+    .card-desc {
+        text-align: left;
+        overflow-wrap: break-word;
+        word-break: break-word;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        color: $textlink;
+        margin: 10px 0px;
+        font-family: 'CircularStdBook' !important;
+    }
+    .card-date {
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        // flex-wrap: wrap;
+        font-family: 'CircularStdMedium';
+        .card-date-label {
+        font-family: 'CircularStdBook' !important;
+        color: $textlink;
+        }
+    }
+}
+
+// .list-card-cont {
+//     &:hover {
+//         z-index: 2;
+//         // border-color: $borderhover;
+//         // border-color: #e5cdc2f5;
+//         // box-shadow: rgb(0 0 0 / 15%) 0px 15px 25px, rgb(0 0 0 / 5%) 0px 5px 10px;
+//     }
+//     &:hover:before {
+//         width: calc(100% + 40px);
+//         height: calc(100% + 40px);
+//         -webkit-box-shadow: 10px 0 30px rgb(13 15 44 / 10%);
+//         box-shadow: 10px 0 30px rgb(13 15 44 / 10%);
+//     }
+    
+//     &:before {
+//         // width: 99.9%;
+//         left: 50%;
+//         top: 50%;
+//         transition: .5s;
+//         background: #ffffff8f;
+//         -webkit-transform: translate(-50%,-50%);
+//         -ms-transform: translate(-50%,-50%);
+//         transform: translate(-50%,-50%);
+//     }
+//     &:before, .schedule-item:before {
+//         // height: 100%;
+//         z-index: -1;
+//         -webkit-transition: .5s;
+//         -o-transition: .5s;
+//         content: '';
+//         position: absolute;
+//     }
+// }
+
+.connect-wallet {
+    h1 {
+        font-family: 'CircularStdBold' !important;
+    }
+
+    .btn-wallet {
+        /* border: 2px solid #2d2d2d; */
+        background-color: rgb(248, 204, 130);
+        color: rgb(51, 51, 51);
+        border-radius: 6px;
+        height: 46px;
+        font-size: 1rem;
+        padding: 0px 22px;
+        background: rgb(248, 204, 130);
+        font-family: 'CircularStdBook' !important;
+        margin: 0px 10px;
+        &:hover {
+            background-color: rgb(248, 204, 130) !important;
+        }
+
+        }
+
+
+}

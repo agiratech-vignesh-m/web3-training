@@ -1,0 +1,51 @@
+@import '../../variables.scss';
+
+.proposal-list-head {
+    font-family: 'CircularStdBook' !important;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    .proposal-filter-box {
+        background-color: transparent;
+        // border-color: $borderhover;
+        // border-width: 1px;
+        // border-style: solid;
+        // height: 3rem;
+        .filter-select {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: row;
+            flex-wrap: wrap;
+        }
+    }
+
+}
+.propoasl-select {
+    color: $textlink !important;
+    .filter-defalt-select {
+        color: "#1f1f1f";
+        font-size: '18px';
+        font-family: 'CircularStdMedium';
+        :hover{
+            color: "#f46228" !important
+        }
+    }
+    .MuiList-root {
+        background-color: black;
+        color: white;
+    }
+    .MuiOutlinedInput-notchedOutline {
+        border: none;
+    }
+    .proposal-stack {
+        margin-right: 2rem;
+}
+}
+.proposal-btn {
+    border-color: $borderhover !important;
+    border-width: 1px !important;
+    border-style: solid !important;
+    color: $textlink !important;
+}
