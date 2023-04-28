@@ -6,8 +6,19 @@ import textImage from '../../asset/Text.png'
 import logo from '../../asset/ethlogo.png'
 import metamask from '../../asset/metamask.png'
 import mask from '../../asset/edited.png'
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
+
+    const navigate = useNavigate();
+
+    const register = () => {
+        navigate("/register")
+    }
+    const dashboard = () => {
+        navigate("/dashboard");
+    }
+
   return (
 
       <Grid container style={{height:"100vh",width:"100%"}}>
@@ -33,8 +44,8 @@ const Login = () => {
         <TextField id="outlined-basic" placeholder="Password" variant="outlined" style={{padding:"0 5% 5% 5%"}}/>
         </div>
         <p style={{textAlign: "end", marginRight: '3rem', cursor: 'pointer', color: 'red'}}>Forget password?</p>
-        <Button variant="contained" style={{width:"90%", margin:'5%', padding: '1.5%'}}>Login</Button>
-        <p style={{textAlign: "center"}}>Don’t have an account? <span style={{color: 'red', cursor: 'pointer'}}>Register</span></p>
+        <Button onClick={dashboard} variant="contained" style={{width:"90%", margin:'5%', padding: '1.5%'}}>Login</Button>
+        <p style={{textAlign: "center"}}>Don’t have an account? <span onClick={register} style={{color: 'red', cursor: 'pointer'}}>Register</span></p>
         </Grid>
 
       </Grid>

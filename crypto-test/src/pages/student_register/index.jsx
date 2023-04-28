@@ -1,5 +1,5 @@
 import React from 'react'
-import './register.css'
+import './reg.css'
 
 import {Button,Grid, TextField} from '@mui/material';
 import textImage from '../../asset/Text.png'
