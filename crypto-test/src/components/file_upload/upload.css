@@ -1,0 +1,11 @@
+.file_upload {
+  border: 2px dashed #BEBABA !important;
+  min-width: 100% !important;
+  max-width: 100% !important;
+  width: 100% !important;
+  margin-right: 2rem;
+}
+
+.drop_zone {
+  background-color: red;
+}
