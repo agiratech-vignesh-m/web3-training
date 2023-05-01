@@ -10,7 +10,6 @@ const Dashboard = () => {
     'Create an ad group',
     'Create an ad',
     'Create an ad',
-    'Create an ad',
   ];
   const studentDetails = {
     id: "1234567",
@@ -53,7 +52,7 @@ const Dashboard = () => {
         </Box>
       </Grid>
       <Grid item xs={8} lg={8} md={8} sm={8} mt={5}>
-        <Steps steps={steps} activeStep={2}/>
+        <Steps steps={steps} activeStep={4}/>
       </Grid>
     </Grid>
   );

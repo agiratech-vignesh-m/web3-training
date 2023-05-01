@@ -71,8 +71,9 @@ function UploadOne() {
             justifyContent: "center",
           }}
         >
+          {/* NEED TO DISPAY THE ipfs LINK */}
           <Box width={"55%"} p={3} borderRadius={3}>
-            {file.name}
+            {file && file.name}
           </Box>
         </Grid>
       )}

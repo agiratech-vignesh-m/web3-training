@@ -14,7 +14,7 @@ const L2verification = () => {
       >
         <Box width={"50%"} mt={3}>
           <Typography fontSize={25} fontWeight={700}>
-            L1 Verificiation
+            L2 Verificiation
           </Typography>
           <Box
             component={"form"}
