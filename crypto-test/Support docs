@@ -1,0 +1,98 @@
+2059013
+11111111
+
+
+1603384
+222222
+
+m
+3058643
+
+p
+3101559
+
+Project Key: e0288c8d50ff5de6fc32
+
+Secret key: 7f22960d9d42622f3ca1e83ef9baf4279ac0533f2be6b6e608cffc682276d97d
+
+JWT access token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySW5mb3JtYXRpb24iOnsiaWQiOiJhOGIzOTE2MS01ZmM4LTQ0ZmQtOTAxNS01ZDM0MjQ1YTI4ODIiLCJlbWFpbCI6InZpZ25lc2gubWFuaWNrYW1AYWdpcmF0ZWNoLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJwaW5fcG9saWN5Ijp7InJlZ2lvbnMiOlt7ImlkIjoiRlJBMSIsImRlc2lyZWRSZXBsaWNhdGlvbkNvdW50IjoxfSx7ImlkIjoiTllDMSIsImRlc2lyZWRSZXBsaWNhdGlvbkNvdW50IjoxfV0sInZlcnNpb24iOjF9LCJtZmFfZW5hYmxlZCI6ZmFsc2UsInN0YXR1cyI6IkFDVElWRSJ9LCJhdXRoZW50aWNhdGlvblR5cGUiOiJzY29wZWRLZXkiLCJzY29wZWRLZXlLZXkiOiJlMDI4OGM4ZDUwZmY1ZGU2ZmMzMiIsInNjb3BlZEtleVNlY3JldCI6IjdmMjI5NjBkOWQ0MjYyMmYzY2ExZTgzZWY5YmFmNDI3OWFjMDUzM2YyYmU2YjZlNjA4Y2ZmYzY4MjI3NmQ5N2QiLCJpYXQiOjE2ODMwMTMyODl9.PbnCXgnYr7BQ3IIgJBQhq7d9ROIF4mN_QTrqOjp47U8
+
+
+
+Digital Credentialing:
+
+April 10, 11, 12, 13 -  (R&D on Firefly, Integration, Wallet study).
+April (17 to 21) - Development work (Smart contract work - Custom NFT)
+April (24 to 28) - Development (Smart Contract work, local setup of firefly and test API).
+
+
+Vignesh Manickam (AT254)
+
+Solosecure :
+
+April (03 to 04) - R&D on How to setup the Private IPFS Node. - 16 hours
+April (05 to 06 and 10) - R&D on Data Auction, Revenue Sharing Model and Data encryption and decryption for IPFS using RSA Algorithm. - 24 hours
+
+April (10) - 
+
+April (10 to 13) - User story creation (MarketPlace, Data pricing, Auction)
+April (17 to 21) - API Study and MarketPlace suggestion for Data providers, (Study on AMM), Liquidity Pool
+April (24 to 28) - Auction model scenarios - (Direct sale, Auction, Bounty, Marketplace)
+
+Total hours = 144 hours (edited)
+
+
+
+import * as React from 'react';
+import { DataGrid } from '@mui/x-data-grid';
+
+const columns = [
+  { field: 'id', headerName: 'ID', width: 70 },
+  { field: 'firstName', headerName: 'First name', width: 130 },
+  { field: 'lastName', headerName: 'Last name', width: 130 },
+  {
+    field: 'age',
+    headerName: 'Age',
+    type: 'number',
+    width: 90,
+  },
+  {
+    field: 'fullName',
+    headerName: 'Full name',
+    description: 'This column has a value getter and is not sortable.',
+    sortable: false,
+    width: 160,
+    valueGetter: (params) =>
+      `${params.row.firstName || ''} ${params.row.lastName || ''}`,
+  },
+];
+
+const rows = [
+  { id: 1, lastName: 'Snow', firstName: 'Jon', age: 35 },
+  { id: 2, lastName: 'Lannister', firstName: 'Cersei', age: 42 },
+  { id: 3, lastName: 'Lannister', firstName: 'Jaime', age: 45 },
+  { id: 4, lastName: 'Stark', firstName: 'Arya', age: 16 },
+  { id: 5, lastName: 'Targaryen', firstName: 'Daenerys', age: null },
+  { id: 6, lastName: 'Melisandre', firstName: null, age: 150 },
+  { id: 7, lastName: 'Clifford', firstName: 'Ferrara', age: 44 },
+  { id: 8, lastName: 'Frances', firstName: 'Rossini', age: 36 },
+  { id: 9, lastName: 'Roxie', firstName: 'Harvey', age: 65 },
+];
+
+export default function DataTable() {
+  return (
+    <div style={{ height: 400, width: '100%' }}>
+      <DataGrid
+        rows={rows}
+        columns={columns}
+        initialState={{
+          pagination: {
+            paginationModel: { page: 0, pageSize: 5 },
+          },
+        }}
+        pageSizeOptions={[5, 10]}
+        checkboxSelection
+      />
+    </div>
+  );
+}

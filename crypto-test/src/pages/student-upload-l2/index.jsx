@@ -1,24 +1,68 @@
 import { Grid, Box, Typography, Button } from "@mui/material";
 import React, { useState } from "react";
 import FileDragDrop from "../../components/file_upload/fileupload";
+import * as ipfsClient from "ipfs-http-client";
+import LoadingButton from '@mui/lab/LoadingButton';
+import { studentUploadL2Setup } from "../../integration/web3Client";
+import { getWalletData } from '../../redux/counter/counterSlice';
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 function UploadTwo() {
   const [file, setFile] = useState(null);
   const [uploaded, setUpload] = useState(false);
   const fileTypes = ["JPG", "PNG", "GIF", "PDF"];
+  const [url, setCid] = useState("");
+  const [uploading, setUploading] = useState(false);
+  const walletData = useSelector(getWalletData);
+  const studentid = localStorage.getItem("studentId");
+  const navigate = useNavigate();
+
+  const ipfs = new ipfsClient.create({
+    url: process.env.REACT_APP_IPFC_SERVER,
+  });
+
+  const onSubmitHandler = async () => {
+    try {
+      
+      console.log("onSubmitHandler", file);
+      const content = new Blob([file], { type: file.type })
+      const { cid } = await ipfs.add(content);
+      console.log("ciddd", cid.toString());
+      let url = process.env.REACT_APP_IPFC_FILE_URL + "/ipfs/" + cid.toString();
+      setCid(url);
+      setUpload(true);
+      
+
+      setUploading(true)
+      let upload2 = await studentUploadL2Setup("metamask", walletData?.account, studentid, url)
+      console.log("Fetching data", walletData?.account, studentid, url)
+      setUploading(false)
+      navigate("/l2_verification");
+
+      // Need to enter the Student ID, ipfs_URL and Wallet address
+
+    } catch (err) {
+      console.log("errrrr", err);
+      throw new Error(err?.message);
+    }
+
+  };
+
+
 
   const handleChange = (file) => {
     console.log("file", file);
     setFile(file);
   };
 
-  const uploadFile = async () => {
-    try {
-      setUpload(true);
-    } catch (err) {
-      console.log("err", err);
-    }
-  };
+  // const uploadFile = async () => {
+  //   try {
+  //     setUpload(true);
+  //   } catch (err) {
+  //     console.log("err", err);
+  //   }
+  // };
 
   const deleteFile = () => {
     try {
@@ -53,9 +97,9 @@ function UploadTwo() {
             <Button color="error" sx={{ mr: 2 }} variant="contained" onClick={deleteFile}>
               Remove
             </Button>
-            <Button color="primary" variant="contained" onClick={uploadFile}>
+            <LoadingButton color="primary" loading={uploading} variant="contained" onClick={onSubmitHandler}>
               Upload
-            </Button>
+            </LoadingButton>
           </Box>
         </Box>
       </Grid>
@@ -72,7 +116,7 @@ function UploadTwo() {
           }}
         >
           <Box width={"55%"} p={3} borderRadius={3}>
-            {file.name}
+            {url}
           </Box>
         </Grid>
       )}

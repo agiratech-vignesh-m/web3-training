@@ -12,6 +12,8 @@ function FileDragDrop({ handleChange, fileTypes, files }) {
       name="file"
       fileOrFiles={files}
       types={fileTypes}
+      webkitdirectory
+      directory
     />
   );
 }

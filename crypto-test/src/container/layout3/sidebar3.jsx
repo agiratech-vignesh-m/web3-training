@@ -38,42 +38,25 @@ function Sidebar() {
         variant="permanent"
         anchor="left"
       >
+        {/* <Toolbar /> */}
+        {/* <Divider /> */}
         <div style={{ textAlign: 'center', marginTop:'10%'}}>
           <img src={require('../../asset/token_new.png') }  width={'180px'} />
         </div>
         <div className="side">
         <List component="nav" aria-labelledby="nested-list-subheader" style={{ backgroundColor: "#A3EEFF", marginTop: '30%'}}>
-                    <ListItemButton onClick={()=> navigate('/dashboard')} style={{paddingTop: '16px', paddingBottom: '16px'}} className={pathname == "/dashboard" ? "active" : "" }>
+                  {<ListItemButton onClick={()=> navigate('/l2_verification')} style={{paddingTop: '16px', paddingBottom: '16px'}} className={pathname == "/l2_verification" ? "active" : ""}>
                       <ListItemText
                           disableTypography
-                          primary={<Typography variant="body5" style={{ fontWeight: 700, fontSize: '18px'}}> Dashboard </Typography>}>
-                      </ListItemText>
-                    </ListItemButton>
-                   {<ListItemButton onClick={()=> navigate('/student_upload_1')} style={{paddingTop: '16px', paddingBottom: '16px'}} className={pathname == "/student_upload_1" ? "active" : ""}>
-                      <ListItemText
-                          disableTypography
-                          primary={<Typography variant="body5" style={{ fontWeight: 700, fontSize: '18px'}}> Student upload to L1 </Typography>}>
+                          primary={<Typography variant="body5" style={{ fontWeight: 700, fontSize: '18px'}}> L2 Approver Verify </Typography>}>
                       </ListItemText>
                     </ListItemButton>}
-                    <ListItemButton onClick={()=> navigate('/student_upload_2')} style={{paddingTop: '16px', paddingBottom: '16px'}} className={pathname == "/student_upload_2" ? "active" : ""}>
+                    <ListItemButton onClick={()=> navigate('/l2_reward_verification')} style={{paddingTop: '16px', paddingBottom: '16px'}} className={pathname == "/l2_reward_verification" ? "active" : ""}>
                       <ListItemText
                         disableTypography
-                        primary={<Typography variant="body5" style={{ fontWeight: 700, fontSize: '18px'}}> Student upload to L2 </Typography>}>
+                        primary={<Typography variant="body5" style={{ fontWeight: 700, fontSize: '18px'}}> L2 Approver Reward Verify </Typography>}>
                       </ListItemText>
                     </ListItemButton >
-                    <ListItemButton onClick={()=> navigate('/reward_docs_upload')} style={{paddingTop: '16px', paddingBottom: '16px'}} className={pathname == "/reward_docs_upload" ? "active" : ""}>
-                      <ListItemText
-                        disableTypography
-                        primary={<Typography variant="body5" style={{ fontWeight: 700, fontSize: '18px'}}> Reward Document upload </Typography>}>
-                          Reward Document upload
-                      </ListItemText>
-                    </ListItemButton>
-                    <ListItemButton onClick={()=> navigate('/loan_details')} style={{paddingTop: '16px', paddingBottom: '16px'}} className={pathname == "/loan_details" ? "active" : ""}>
-                      <ListItemText
-                        disableTypography
-                        primary={<Typography variant="body5" style={{ fontWeight: 700, fontSize: '18px'}}> Loan Information </Typography>}>
-                      </ListItemText>
-                    </ListItemButton>
               </List>
             </div>
       </Drawer>

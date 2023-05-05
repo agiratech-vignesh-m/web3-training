@@ -1,10 +1,12 @@
 import registerabi from './registerabi.json';
+import loanabi from './loanabi.json';
 import Web3 from 'web3';
 
 let isRegisterInitialized = false;
-// console.log("id resgister",isRegisterInitialized )
 let registerContract;
 
+let isLoanInitialized = false;
+let loanContract;
 
 // let isVotingInitialized = false;
 // let votingContract;
@@ -57,7 +59,7 @@ export const initiateNetwork = async (provider) => {
   }
 }
 
-// common: initiate Voting contract
+// common: initiate Register contract
 
 export const initiateRegisterContract = async (conn_provider) => {
   let provider = detectCurrentProvider(conn_provider)
@@ -70,6 +72,22 @@ export const initiateRegisterContract = async (conn_provider) => {
     );
 
     isRegisterInitialized = true;
+  }
+}
+
+// common: initiate Loan contract
+
+export const initiateLoanContract = async (conn_provider) => {
+  let provider = detectCurrentProvider(conn_provider)
+
+  if (provider) {
+    const web3 = new Web3(provider);
+    loanContract = new web3.eth.Contract(
+      loanabi,
+      process.env.REACT_APP_LOAN_CONTRACT
+    );
+
+    isLoanInitialized = true;
   }
 }
 
@@ -107,6 +125,256 @@ export const loginVerifySetup = async (conn_provider, _studentID, _password) => 
       console.log(isRegistered, "isRegistered")
       return isRegistered
     })
+}
+
+export const studentUploadL1Setup = async (conn_provider, w_address, _studentID, _ipfsURL) => {
+  console.log("Student_Upload_L1", conn_provider, w_address, _studentID, _ipfsURL)
+  let provider = detectCurrentProvider(conn_provider);
+
+  if (!isLoanInitialized) {
+    await initiateLoanContract(conn_provider)
+  }
+
+  if (provider) {
+      return await loanContract.methods.studentUploadtoL1(_studentID, _ipfsURL).send({
+      from: w_address
+    })
+  }
+}
+
+export const studentUploadL2Setup = async (conn_provider, w_address, _studentID, _ipfsURL) => {
+  console.log("Student_Upload_L2", conn_provider, w_address, _studentID, _ipfsURL)
+  let provider = detectCurrentProvider(conn_provider);
+
+  if (!isLoanInitialized) {
+    await initiateLoanContract(conn_provider)
+  }
+
+  if (provider) {
+      return await loanContract.methods.studentUploadtoL2(_studentID, _ipfsURL).send({
+      from: w_address
+    })
+  }
+}
+
+export const l1VerifySetup = async (conn_provider, _studentID) => {
+  console.log("Verify1",  _studentID)
+  if (!isLoanInitialized) {
+    await initiateLoanContract(conn_provider)
+  }
+  return await loanContract.methods.l1ReadIpfsURL(_studentID)
+    .call()
+    .then((v1Details) => {
+      console.log(v1Details, "V1Details")
+      return v1Details
+    })
+}
+
+export const l1ApproveSetup = async (conn_provider, w_address, _studentID, _status) => {
+  console.log("L1 approve", conn_provider, w_address, _studentID, _status)
+  let provider = detectCurrentProvider(conn_provider);
+
+  if (!isLoanInitialized) {
+    await initiateLoanContract(conn_provider)
+  }
+
+  if (provider) {
+      return await loanContract.methods.l1Verify(_studentID, _status).send({
+      from: w_address
+    })
+  }
+}
+
+export const l2VerifySetup = async (conn_provider, _studentID) => {
+  if (!isLoanInitialized) {
+    await initiateLoanContract(conn_provider)
+  }
+  return await loanContract.methods.l2ReadIpfsURL(_studentID)
+    .call()
+    .then((v2Details) => {
+      console.log(v2Details, "V2Details")
+      return v2Details
+    })
+}
+
+export const l2ApproveSetup = async (conn_provider, w_address, _studentID, _status) => {
+  console.log("L2 approve", conn_provider, w_address, _studentID, _status)
+  let provider = detectCurrentProvider(conn_provider);
+
+  if (!isLoanInitialized) {
+    await initiateLoanContract(conn_provider)
+  }
+
+  if (provider) {
+      return await loanContract.methods.l2Verify(_studentID, _status).send({
+      from: w_address
+    })
+  }
+}
+
+export const l2LoanSactionSetup = async (conn_provider, w_address, _studentID, _loanDuration, _collegeWalletAddress, _amount) => {
+  console.log("L2 Loan sanction", _studentID, _loanDuration, _collegeWalletAddress, _amount)
+  let provider = detectCurrentProvider(conn_provider);
+
+  if (!isLoanInitialized) {
+    await initiateLoanContract(conn_provider)
+  }
+
+  if (provider) {
+      return await loanContract.methods.l2SanctionedLoan(_studentID, _loanDuration, _collegeWalletAddress, _amount).send({
+      from: w_address
+    })
+  }
+}
+
+export const dashboardData1Setup = async (conn_provider, _studentID) => {
+  let provider = detectCurrentProvider(conn_provider);
+  const web3 = new Web3(provider);
+  if (!isLoanInitialized) {
+    await initiateLoanContract(conn_provider)
+  }
+  return await loanContract.methods.dashboardView(_studentID)
+    .call()
+    .then((studentDetails1) => {
+      // let sDetails = {
+      //     studentID: studentDetails1.studentGeneratedID,
+      //     loanDuration: studentDetails1.loanDuration,
+      //     profileStatus: studentDetails1.profileStatus,
+      //     loanReleasedAmount: parseFloat(web3.utils.fromWei(studentDetails1.loanReleasedAmount, 'ether')),
+      //     rewardStatus: studentDetails1.rewardStatus,
+      //     rewardAmountReceived: parseFloat(web3.utils.fromWei(studentDetails1.rewardAmountReceived, 'ether')),
+      //     repaymentStatus: studentDetails1.repaymentStatus,
+      //     repaidAmount: parseFloat(web3.utils.fromWei(studentDetails1.repaidAmount, 'ether')),
+      //     remainingAmount: parseFloat(web3.utils.fromWei(studentDetails1.remainingAmount, 'ether')),
+      //     principalPlusInterest: parseFloat(web3.utils.fromWei(studentDetails1.principalPlusInterest, 'ether')),
+      //     monthlyInstallments: parseFloat(web3.utils.fromWei(studentDetails1.monthlyInstallments, 'ether')),
+      //     remainingInstallmentMonths: parseFloat(web3.utils.fromWei(studentDetails1.monthlyInstallments, 'ether'))
+      // }
+      //       console.log('sDetails', sDetails)
+      //       return sDetails;
+              console.log('studentDetails1', studentDetails1)
+            return studentDetails1;
+      }
+    )
+}
+
+export const dashboardMilestoneSetup = async (conn_provider, _studentID) => {
+  let provider = detectCurrentProvider(conn_provider);
+  // const web3 = new Web3(provider);
+  if (!isLoanInitialized) {
+    await initiateLoanContract(conn_provider)
+  }
+  return await loanContract.methods.readMilestone(_studentID)
+    .call()
+    .then((milestoneDetails1) => {
+      // let mDetails = {
+      //   step1: milestoneDetails1.onboardStatus,
+      //   step2: milestoneDetails1.L1ApprovalStatus,
+      //   step3: milestoneDetails1.L2ApprovalStatus,
+      //   step4: milestoneDetails1.FundReleaseStatus
+      // }
+      //       console.log('sDetails', mDetails)
+      //       return mDetails;
+      console.log('milestoneDetails1', milestoneDetails1)
+      if(milestoneDetails1.FundReleaseStatus)
+      return 4;
+      if(milestoneDetails1.L2ApprovalStatus)
+      return 3;
+      if(milestoneDetails1.L1ApprovalStatus)
+      return 2;
+      // else(milestoneDetails1.onboardStatus)
+      return 1;
+      }
+    )
+}
+
+export const studentUploadRewardSetup = async (conn_provider, w_address, _studentID, _ipfsURL) => {
+  console.log("Student_Upload_L2", conn_provider, w_address, _studentID, _ipfsURL)
+  let provider = detectCurrentProvider(conn_provider);
+
+  if (!isLoanInitialized) {
+    await initiateLoanContract(conn_provider)
+  }
+
+  if (provider) {
+      return await loanContract.methods.studentUploadForReward(_studentID, _ipfsURL).send({
+      from: w_address
+    })
+  }
+}
+
+export const l2RewardVerifySetup = async (conn_provider, _studentID) => {
+  if (!isLoanInitialized) {
+    await initiateLoanContract(conn_provider)
+  }
+  return await loanContract.methods.l2ReadRewardIpfsURL(_studentID)
+    .call()
+    .then((v2RewardDetails) => {
+      console.log(v2RewardDetails, "v2RewardDetails")
+      return v2RewardDetails
+    })
+}
+
+export const approveVerifyCountSetup = async (conn_provider, _studentID) => {
+  if (!isLoanInitialized) {
+    await initiateLoanContract(conn_provider)
+  }
+  return await loanContract.methods.projectStatusPerId(_studentID)
+    .call()
+    .then((v1ApproveStatus) => {
+      console.log(v1ApproveStatus, "v1ApproveStatus")
+      return v1ApproveStatus
+    })
+}
+
+// export const l2RewardLoanSactionSetup = async (conn_provider, _studentID, _amount) => {
+//   console.log("L2 Loan sanction", _studentID, _amount)
+//   let provider = detectCurrentProvider(conn_provider);
+
+//   if (!isLoanInitialized) {
+//     await initiateLoanContract(conn_provider)
+//   }
+
+//   if (provider) {
+//       return await loanContract.methods.l2RewardSanction(_studentID, _amount)
+//       .call()
+//       .then((RewardDetails) => {
+//       console.log(RewardDetails, "RewardDetails")
+//       return RewardDetails
+//     //   .send({
+//     //   from: w_address
+//     // })
+//   })
+// }
+// }
+export const l2RewardLoanSactionSetup = async (conn_provider, w_address, _studentID, _amount) => {
+  console.log("L2 Loan sanction", w_address, _studentID, _amount)
+  let provider = detectCurrentProvider(conn_provider);
+
+  if (!isLoanInitialized) {
+    await initiateLoanContract(conn_provider)
+  }
+
+  if (provider) {
+      return await loanContract.methods.l2RewardSanction(_studentID, _amount).send({
+      from: w_address
+    })
+  }
+}
+
+export const repayLoanSetup = async (conn_provider, w_address, _studentID, _amount) => {
+  console.log("L2 Loan sanction", w_address, _studentID, _amount)
+  let provider = detectCurrentProvider(conn_provider);
+
+  if (!isLoanInitialized) {
+    await initiateLoanContract(conn_provider)
+  }
+
+  if (provider) {
+      return await loanContract.methods.repayLoan(_studentID, _amount).send({
+      from: w_address
+    })
+  }
 }
 
 // common: initiate Voting contract

@@ -1,0 +1,592 @@
+[
+    {
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "_l1Address",
+                "type": "address"
+            },
+            {
+                "internalType": "address",
+                "name": "_l2Address",
+                "type": "address"
+            },
+            {
+                "internalType": "address",
+                "name": "_studentContractAddress",
+                "type": "address"
+            },
+            {
+                "internalType": "address",
+                "name": "_usdt",
+                "type": "address"
+            },
+            {
+                "internalType": "uint256",
+                "name": "_rate",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "nonpayable",
+        "type": "constructor"
+    },
+    {
+        "inputs": [],
+        "name": "addressAlreadyRegistered",
+        "type": "error"
+    },
+    {
+        "inputs": [],
+        "name": "allDuesPaidNoInstallmentsPending",
+        "type": "error"
+    },
+    {
+        "inputs": [],
+        "name": "inputConnectedWalletAddress",
+        "type": "error"
+    },
+    {
+        "anonymous": false,
+        "inputs": [
+            {
+                "indexed": true,
+                "internalType": "address",
+                "name": "previousOwner",
+                "type": "address"
+            },
+            {
+                "indexed": true,
+                "internalType": "address",
+                "name": "newOwner",
+                "type": "address"
+            }
+        ],
+        "name": "OwnershipTransferred",
+        "type": "event"
+    },
+    {
+        "inputs": [],
+        "name": "USDT",
+        "outputs": [
+            {
+                "internalType": "address",
+                "name": "",
+                "type": "address"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "_newRate",
+                "type": "uint256"
+            }
+        ],
+        "name": "configureInterestRate",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "_studentID",
+                "type": "uint256"
+            }
+        ],
+        "name": "dashboardView",
+        "outputs": [
+            {
+                "components": [
+                    {
+                        "internalType": "uint256",
+                        "name": "studentGeneratedID",
+                        "type": "uint256"
+                    },
+                    {
+                        "internalType": "uint256",
+                        "name": "loanDuration",
+                        "type": "uint256"
+                    },
+                    {
+                        "internalType": "string",
+                        "name": "profileStatus",
+                        "type": "string"
+                    },
+                    {
+                        "internalType": "uint256",
+                        "name": "loanReleasedAmount",
+                        "type": "uint256"
+                    },
+                    {
+                        "internalType": "string",
+                        "name": "rewardStatus",
+                        "type": "string"
+                    },
+                    {
+                        "internalType": "uint256",
+                        "name": "rewardAmountReceived",
+                        "type": "uint256"
+                    },
+                    {
+                        "internalType": "string",
+                        "name": "repaymentStatus",
+                        "type": "string"
+                    },
+                    {
+                        "internalType": "uint256",
+                        "name": "repaidAmount",
+                        "type": "uint256"
+                    },
+                    {
+                        "internalType": "uint256",
+                        "name": "remainingAmount",
+                        "type": "uint256"
+                    },
+                    {
+                        "internalType": "uint256",
+                        "name": "principalPlusInterest",
+                        "type": "uint256"
+                    },
+                    {
+                        "internalType": "uint256",
+                        "name": "monthlyInstallments",
+                        "type": "uint256"
+                    },
+                    {
+                        "internalType": "uint256",
+                        "name": "remainingInstallmentMonths",
+                        "type": "uint256"
+                    }
+                ],
+                "internalType": "struct Eduloan.Dashboard",
+                "name": "dashboardInfo",
+                "type": "tuple"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "interestRate",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "l1Approver",
+        "outputs": [
+            {
+                "internalType": "address",
+                "name": "",
+                "type": "address"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "_studentID",
+                "type": "uint256"
+            }
+        ],
+        "name": "l1MilestoneCount",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "rejectionCount",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "_studentID",
+                "type": "uint256"
+            }
+        ],
+        "name": "l1ReadIpfsURL",
+        "outputs": [
+            {
+                "internalType": "string[]",
+                "name": "ipfs_url",
+                "type": "string[]"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "_studentID",
+                "type": "uint256"
+            },
+            {
+                "internalType": "bool",
+                "name": "_status",
+                "type": "bool"
+            }
+        ],
+        "name": "l1Verify",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "l2Approver",
+        "outputs": [
+            {
+                "internalType": "address",
+                "name": "",
+                "type": "address"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "_studentID",
+                "type": "uint256"
+            }
+        ],
+        "name": "l2MilestoneCount",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "rejectionCount",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "_studentID",
+                "type": "uint256"
+            }
+        ],
+        "name": "l2ReadIpfsURL",
+        "outputs": [
+            {
+                "internalType": "string[]",
+                "name": "ipfs_url",
+                "type": "string[]"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "_studentID",
+                "type": "uint256"
+            }
+        ],
+        "name": "l2ReadRewardIpfsURL",
+        "outputs": [
+            {
+                "internalType": "string[]",
+                "name": "ipfs_url",
+                "type": "string[]"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "_studentID",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "_amount",
+                "type": "uint256"
+            }
+        ],
+        "name": "l2RewardSanction",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "_studentID",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "_loanDuration",
+                "type": "uint256"
+            },
+            {
+                "internalType": "address",
+                "name": "_collegeWalletAddress",
+                "type": "address"
+            },
+            {
+                "internalType": "uint256",
+                "name": "_amount",
+                "type": "uint256"
+            }
+        ],
+        "name": "l2SanctionedLoan",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "_studentID",
+                "type": "uint256"
+            },
+            {
+                "internalType": "bool",
+                "name": "_status",
+                "type": "bool"
+            }
+        ],
+        "name": "l2Verify",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "owner",
+        "outputs": [
+            {
+                "internalType": "address",
+                "name": "",
+                "type": "address"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "_studentID",
+                "type": "uint256"
+            }
+        ],
+        "name": "projectStatusPerId",
+        "outputs": [
+            {
+                "internalType": "bool",
+                "name": "project",
+                "type": "bool"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "_studentID",
+                "type": "uint256"
+            }
+        ],
+        "name": "readMilestone",
+        "outputs": [
+            {
+                "internalType": "bool",
+                "name": "onboardStatus",
+                "type": "bool"
+            },
+            {
+                "internalType": "bool",
+                "name": "L1ApprovalStatus",
+                "type": "bool"
+            },
+            {
+                "internalType": "bool",
+                "name": "L2ApprovalStatus",
+                "type": "bool"
+            },
+            {
+                "internalType": "bool",
+                "name": "FundReleaseStatus",
+                "type": "bool"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "renounceOwnership",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "_studentID",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "_amount",
+                "type": "uint256"
+            }
+        ],
+        "name": "repayLoan",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "_studentID",
+                "type": "uint256"
+            },
+            {
+                "internalType": "bool",
+                "name": "_status",
+                "type": "bool"
+            }
+        ],
+        "name": "rewardVerify",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "_studentID",
+                "type": "uint256"
+            },
+            {
+                "internalType": "string",
+                "name": "_ipfsURL",
+                "type": "string"
+            }
+        ],
+        "name": "studentUploadForReward",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "_studentID",
+                "type": "uint256"
+            },
+            {
+                "internalType": "string",
+                "name": "_ipfsURL",
+                "type": "string"
+            }
+        ],
+        "name": "studentUploadtoL1",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "_studentID",
+                "type": "uint256"
+            },
+            {
+                "internalType": "string",
+                "name": "_ipfsURL",
+                "type": "string"
+            }
+        ],
+        "name": "studentUploadtoL2",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "newOwner",
+                "type": "address"
+            }
+        ],
+        "name": "transferOwnership",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "usdtBalance",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "_amount",
+                "type": "uint256"
+            }
+        ],
+        "name": "vault",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    }
+]

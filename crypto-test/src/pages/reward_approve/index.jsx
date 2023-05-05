@@ -1,68 +1,40 @@
-import { Box, Grid, TextField, Typography, Button } from "@mui/material";
-import { l1ApproveSetup, approveVerifyCountSetup, l1VerifySetup, l2ApproveVerifyCountSetup } from "../../integration/web3Client";
+import { Box, Grid, TextField, Typography, Button, InputAdornment } from "@mui/material";
+import { l2ApproveSetup, l2LoanSactionSetup, l2RewardLoanSactionSetup, l2RewardVerifySetup, l2VerifySetup } from "../../integration/web3Client";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { getWalletData } from '../../redux/counter/counterSlice';
 import LoadingButton from '@mui/lab/LoadingButton';
+import metafox from '../../asset/MetaMask_Fox.png'
 
-const L1verification = () => {
+const L2RewardVerification = () => {
 
   const [sid, setSid] = useState();
   const [hash, setHash] = useState();
   const walletData = useSelector(getWalletData);
+  const [loanDuration, setLoanDuration] = useState();
+  const [rewardAmount, setRewardAmount] = useState();
+  const [collegeWallet, setCollegeWallet] = useState("");
   const [uploading, setUploading] = useState(false);
-  // const [approveCount, setApproveCount] = useState(false);
-
   const studentid = localStorage.getItem("studentId");
-  // console.log("studentid", studentid)
   const navigate = useNavigate();
   
 
   const searchID = async () => {
-    setUploading(true)
-    let verify1 = await l1VerifySetup("metamask", studentid)
     
-    setHash(verify1)
-    setUploading(false)
-      // console.log("Fetching data", walletData?.account, studentid, url)
+    let reward_verify2 = await l2RewardVerifySetup("metamask", studentid)
+  
+    setHash(reward_verify2)
   }
 
-  const updateStatus = async (status) => {
+  const updateStatus = async () => {
 
-    if(status == true){
     setUploading(true)
-    let approve1 = await l1ApproveSetup("metamask", walletData?.account, studentid, status)
-    console.log("approve1", approve1)
-    navigate("/student_upload_2");
+    let RewardCredit = await l2RewardLoanSactionSetup("metamask", walletData?.account, studentid, rewardAmount)
+    console.log("RewardCredit", RewardCredit);
     setUploading(false)
-  } else{
-    let approve1 = await l1ApproveSetup("metamask", walletData?.account, studentid, status)
-    
-    console.log("approve1", approve1)
-
-    let approveCount = await approveVerifyCountSetup("metamask", studentid)
-    console.log("approve1Count", approveCount)
-    //     // setApproveCount(approveCount);
-    // // setUploading(true)
-    if (approveCount == false){
-      navigate("/student_upload_1");
-    }else {
-      navigate("/rejected_page"); 
-    }
-    
-    
-    
-    
-    
-    
-    // setUploading(false)
-    
-      // console.log("Fetching data", walletData?.account, studentid, url)
-    }
+    navigate("/dashboard");
   }
-
-
 
   return (
     <Grid container>
@@ -77,7 +49,7 @@ const L1verification = () => {
       >
         <Box width={"50%"} mt={3}>
           <Typography fontSize={25} fontWeight={700}>
-            L1 Verificiation
+            L2 Verificiation
           </Typography>
           <Box
             component={"form"}
@@ -114,12 +86,29 @@ const L1verification = () => {
             }}
           >
             <Typography fontSize={20} >
-              {/* IPFS URL : https://ipfs.io/ipfs/
-              QmUekmQdD9stUSswQ3Y8H14YXkQUtvBU5BKXHGVG7FJcB3 */}
             </Typography>
               <a href={hash} target="_blank">{hash}</a>
           </Box>
-
+          <Typography fontSize={25} fontWeight={700} style={{marginTop: '5%'}}>
+            Enter the Reward Amount:
+          </Typography>
+          <Grid container >
+          <Grid item md={12} >
+          </Grid>
+          <Grid item md={6} >
+          <TextField
+              sx={{
+              marginTop: '6%'
+              }}
+              required
+              name="amount"
+              label="Amount"
+              id="outlined-required"
+              value={rewardAmount}
+              onChange={e => setRewardAmount(e.target.value)}
+            />
+          </Grid>  
+        </Grid>
           <Box
             component={"form"}
             sx={{
@@ -129,17 +118,9 @@ const L1verification = () => {
               mt: 5,
             }}
           >
-            <Button
-              variant="contained" color="error" sx={{ height: 50, ml: 3 }} onClick={() => updateStatus(false)}
-            >
-              Reject
-            </Button>
-            <LoadingButton variant="contained" sx={{ height: 50, ml: 3 }} loading={uploading} onClick={() => updateStatus(true)}>
+            <LoadingButton variant="contained" sx={{ height: 50, ml: 3 }} loading={uploading} onClick={updateStatus}>
               Approve
             </LoadingButton>
-            {/* <LoadingButton color="primary" loading={uploading} variant="contained" onClick={onSubmitHandler}>
-              Upload
-            </LoadingButton> */}
           </Box>
         </Box>
       </Grid>
@@ -147,4 +128,4 @@ const L1verification = () => {
   );
 };
 
-export default L1verification;
+export default L2RewardVerification;

@@ -3,7 +3,7 @@ import './reg.css'
 import InputAdornment from '@mui/material/InputAdornment';
 import {Button,Grid, TextField} from '@mui/material';
 import textImage from '../../asset/Text.png'
-import logo from '../../asset/ethlogo.png'
+import logo from '../../asset/Agira_Logo.png'
 import metamask from '../../asset/metamask.png'
 import mask from '../../asset/edited.png'
 import AutorenewIcon from '@mui/icons-material/Autorenew';
@@ -88,7 +88,7 @@ const Register = () => {
           <TextField id="outlined-basic" placeholder='Email ID' variant="outlined" value={email} type="email" readOnly={isSubmited} onChange={e => setEmail(e.target.value)} style={{padding:'5%'}}/>
           </Grid>
           <Grid item md={6} >
-          <TextField id="outlined-basic" placeholder='Password' variant="outlined" value={password} readOnly={isSubmited} onChange={e => setPassword(e.target.value)} style={{padding:'5%'}}/>
+          <TextField id="outlined-basic" placeholder='Password' type= 'password' variant="outlined" value={password} readOnly={isSubmited} onChange={e => setPassword(e.target.value)} style={{padding:'5%'}}/>
           </Grid>
           <Grid item md={6} >
           <TextField id="outlined-basic" placeholder='Generate-ID' variant="outlined" value={num} readOnly={isSubmited} onChange={e => setNum(e.target.value)} InputProps={{
@@ -100,8 +100,8 @@ const Register = () => {
             </InputAdornment>
             
           ),
-        }}
-        style={{padding:'5%'}}>
+          }}
+          style={{padding:'5%'}}>
           </TextField>
           </Grid>
           <Grid item xs={12} >
@@ -111,7 +111,7 @@ const Register = () => {
               <img src={metafox}  style = {{height:"2.5rem",objectFit:'contain'}}/>
             </InputAdornment>
           ),
-        }}style={{paddingLeft:' 5%'}}/>
+          }}style={{paddingLeft:' 5%'}}/>
           </Grid>
           <Grid item md={12} >
           <Button variant="contained" style={{width:"90%", margin:'5%', padding: '1.5%'}} disabled={isSubmited} onClick={handleSubmit}>Register</Button>
