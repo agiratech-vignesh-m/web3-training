@@ -48,7 +48,7 @@ const Dashboard = () => {
     useEffect(() => {
       studentDetails();
       studentMilstone();
-    }, []);
+    },[]);
 
     
     const studentDetails = async () => {
@@ -78,7 +78,7 @@ const Dashboard = () => {
                 <StyledTableCell component="th" >
                   Student Id:
                 </StyledTableCell>
-                <StyledTableCell align="right"> {details?.studentID} </StyledTableCell>
+                <StyledTableCell align="right"> {studentid} </StyledTableCell>
                 
               </StyledTableRow>
               <StyledTableRow>
@@ -111,7 +111,7 @@ const Dashboard = () => {
               </StyledTableRow>
               <StyledTableRow>
                 <StyledTableCell component="th" >
-                    Reward Recived:
+                    Reward Received:
                 </StyledTableCell>
                 <StyledTableCell align="right"> {details?.rewardAmountReceived} </StyledTableCell>
                 
@@ -146,9 +146,9 @@ const Dashboard = () => {
               </StyledTableRow>
               <StyledTableRow>
                 <StyledTableCell component="th" >
-                    Remaining Installment Monthly:
+                    Remaining Installments:
                 </StyledTableCell>
-                <StyledTableCell align="right"> {details?.remainingInstallmentMonths} </StyledTableCell>
+                <StyledTableCell align="right"> {details?.remainingInstallmentMonths} months</StyledTableCell>
                 
               </StyledTableRow>
           

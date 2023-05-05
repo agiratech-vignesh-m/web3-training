@@ -236,24 +236,23 @@ export const dashboardData1Setup = async (conn_provider, _studentID) => {
   return await loanContract.methods.dashboardView(_studentID)
     .call()
     .then((studentDetails1) => {
-      // let sDetails = {
-      //     studentID: studentDetails1.studentGeneratedID,
-      //     loanDuration: studentDetails1.loanDuration,
-      //     profileStatus: studentDetails1.profileStatus,
-      //     loanReleasedAmount: parseFloat(web3.utils.fromWei(studentDetails1.loanReleasedAmount, 'ether')),
-      //     rewardStatus: studentDetails1.rewardStatus,
-      //     rewardAmountReceived: parseFloat(web3.utils.fromWei(studentDetails1.rewardAmountReceived, 'ether')),
-      //     repaymentStatus: studentDetails1.repaymentStatus,
-      //     repaidAmount: parseFloat(web3.utils.fromWei(studentDetails1.repaidAmount, 'ether')),
-      //     remainingAmount: parseFloat(web3.utils.fromWei(studentDetails1.remainingAmount, 'ether')),
-      //     principalPlusInterest: parseFloat(web3.utils.fromWei(studentDetails1.principalPlusInterest, 'ether')),
-      //     monthlyInstallments: parseFloat(web3.utils.fromWei(studentDetails1.monthlyInstallments, 'ether')),
-      //     remainingInstallmentMonths: parseFloat(web3.utils.fromWei(studentDetails1.monthlyInstallments, 'ether'))
-      // }
-      //       console.log('sDetails', sDetails)
-      //       return sDetails;
-              console.log('studentDetails1', studentDetails1)
-            return studentDetails1;
+      let sDetails = {
+          studentID: studentDetails1.studentGeneratedID,
+          loanDuration: studentDetails1.loanDuration,
+          profileStatus: studentDetails1.profileStatus,
+          loanReleasedAmount: parseFloat(web3.utils.fromWei(studentDetails1.loanReleasedAmount, 'ether')),
+          rewardStatus: studentDetails1.rewardStatus,
+          rewardAmountReceived: parseFloat(web3.utils.fromWei(studentDetails1.rewardAmountReceived, 'ether')),
+          repaymentStatus: studentDetails1.repaymentStatus,
+          repaidAmount: parseFloat(web3.utils.fromWei(studentDetails1.repaidAmount, 'ether')),
+          remainingAmount: parseFloat(web3.utils.fromWei(studentDetails1.remainingAmount, 'ether')),
+          principalPlusInterest: parseFloat(web3.utils.fromWei(studentDetails1.principalPlusInterest, 'ether')),
+          monthlyInstallments: parseFloat(web3.utils.fromWei(studentDetails1.monthlyInstallments, 'ether')),
+          remainingInstallmentMonths: parseFloat(web3.utils.fromWei(studentDetails1.monthlyInstallments, 'ether'))
+      }
+            console.log('sDetails', sDetails)
+            return sDetails;
+            //      
       }
     )
 }

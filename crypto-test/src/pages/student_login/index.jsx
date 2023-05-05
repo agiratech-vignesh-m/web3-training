@@ -247,6 +247,7 @@ const handleSubmit = async () => {
           <TextField
             id="outlined-basic"
             placeholder="Password"
+            type= "password"
             variant="outlined"
             style={{ padding: "0 5% 5% 5%" }}
             value={password} 
